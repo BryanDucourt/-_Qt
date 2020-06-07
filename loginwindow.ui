@@ -112,6 +112,28 @@
      </property>
     </widget>
    </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>370</y>
+      <width>411</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+      <pointsize>22</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/background/ChooseButton.png);</string>
+    </property>
+    <property name="text">
+     <string>成绩管理          </string>
+    </property>
+   </widget>
   </widget>
   <action name="actionchaxun">
    <property name="text">
@@ -119,8 +141,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="back-button.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -1,10 +1,12 @@
 <RCC>
-  <qresource prefix="/new/background">
-    <file>blank.jpg</file>
-    <file>CloseButton.png</file>
-    <file>MinimumButton.png</file>
-    <file>ChooseButton.png</file>
-    <file>background1.jpg</file>
-    <file>mainBack.jpg</file>
-  </qresource>
+    <qresource prefix="/new/background">
+        <file>input_box.jpg</file>
+        <file>blank.jpg</file>
+        <file>CloseButton.png</file>
+        <file>MinimumButton.png</file>
+        <file>ChooseButton.png</file>
+        <file>background1.jpg</file>
+        <file>mainBack.jpg</file>
+        <file>wrong.png</file>
+    </qresource>
 </RCC>

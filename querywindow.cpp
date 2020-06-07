@@ -25,12 +25,8 @@ queryWindow::queryWindow(QWidget *parent) :
         gradeRead+=temp;
     }
     fileRead.close();
-    switch (id)
-    {
-        case 0:
-            ui->teacher_button->hide();
-        break;
-    }
+    if(id==0)
+        ui->teacher_button->hide();
 }
 
 queryWindow::~queryWindow()
@@ -41,13 +37,11 @@ queryWindow::~queryWindow()
 void queryWindow::on_student_button_clicked()
 {
     QString search,temp,locate;
-    switch (id)
+    if (id==0)
     {
-        case 0:
-            ui->search_input->setText(userName);
-            ui->search_input->setReadOnly(true);
-            ui->tip->setText("只能查询自己的成绩！");
-        break;
+        ui->search_input->setText(userName);
+        ui->search_input->setReadOnly(true);
+        ui->tip->setText("只能查询自己的成绩！");
     }
     search=ui->search_input->text();
     if(gradeRead.indexOf(search)!=-1)
@@ -120,7 +114,33 @@ void queryWindow::setAreaMovable(const QRect rt)
 
 void queryWindow::on_teacher_button_clicked()
 {
-    QString temp;
-    int i=0,j=0;
+    QString textFind,textSet;
+    QStringList temp;
+    temp=gradeRead.split("--",QString::SkipEmptyParts);
+    int i=0,score_sum;
+    for (i=0;i<temp.size();i++)
+    {
+        score_sum=0;
+        textFind=temp[i];
+        int nStart=textFind.indexOf(QRegExp("[\u4e00-\u9fa5]")),nEnd=textFind.indexOf(" ",nStart);
+        textSet=textFind.mid(nStart,nEnd-nStart);
+        ui->tableWidget->setItem(i,0,new QTableWidgetItem(textSet));
+        nStart=textFind.indexOf(QRegExp("[0-9]{8,10}"));
+        nEnd=textFind.indexOf(" ",nStart);
+        ui->tableWidget->setItem(i,1,new QTableWidgetItem(textFind.mid(nStart,nEnd-nStart)));
+        for(int j=1;j<=3;j++)
+        {
+            QString locate=" ";
+            locate+=QString::number(j);
+            locate+=" ";
+            nStart=textFind.indexOf(locate,0);
+            nEnd=textFind.indexOf(" ",nStart+3);
+            ui->tableWidget->setItem(i,j+1,new QTableWidgetItem(textFind.mid(nStart+3,nEnd-nStart-3)));
+            QString str=textFind.mid(nStart+3,nEnd-nStart-3);
+            ;
+            score_sum+=str.toInt();
 
+        }
+        ui->tableWidget->setItem(i,5,new QTableWidgetItem(QString::number(score_sum/3)));
+    }
 }

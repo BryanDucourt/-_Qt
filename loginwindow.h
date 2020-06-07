@@ -4,7 +4,7 @@
 
 #include <dialogquit.h>
 #include <querywindow.h>
-
+#include <account_manage.h>
 namespace Ui {
 class LoginWindow;
 }
@@ -18,7 +18,10 @@ public:
     ~LoginWindow();
     void setAreaMovable(const QRect rt);
     void mySlot();
+
     QString userName;
+    QString passWord;
+    QString userProfile;
     int id;
 private:
     Ui::LoginWindow *ui;
@@ -32,6 +35,8 @@ private slots:
 
     void on_pushButton_clicked();
     void dealSelfSlot();
+    void dealSelfSlot_1();
+    void on_pushButton_3_clicked();
 
 private:
     QRect m_areaMovable;//可移动窗口的区域，鼠标只有在该区域按下才能移动窗口
@@ -39,6 +44,7 @@ private:
     QPoint m_ptPress;//鼠标按下的初始位置
     DialogQuit *dialogquit=new DialogQuit;
     queryWindow *querywindow=new queryWindow;
+    account_manage *account_manage_window=new account_manage;
 };
 
 #endif // LOGINWINDOW_H

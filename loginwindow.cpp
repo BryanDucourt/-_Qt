@@ -5,6 +5,7 @@ void LoginWindow::dealSelfSlot()
     querywindow->close();
     this->show();
 }
+
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginWindow)
@@ -13,7 +14,15 @@ LoginWindow::LoginWindow(QWidget *parent) :
     setWindowFlags(Qt::FramelessWindowHint);
     m_areaMovable.setRect(0,0,this->width(),30);
     connect(querywindow,SIGNAL(mySignal()),this,SLOT(dealSelfSlot()));
+    connect(account_manage_window,SIGNAL(mySignal()),this,SLOT(dealSelfSlot_1()));
+    if (id==0)
+        ui->pushButton_4->hide();
 
+}
+void LoginWindow::dealSelfSlot_1()
+{
+    account_manage_window->close();
+    this->show();
 }
 void LoginWindow::mousePressEvent(QMouseEvent *e)
 {
@@ -71,3 +80,11 @@ void LoginWindow::on_pushButton_clicked()
 
 }
 
+
+void LoginWindow::on_pushButton_3_clicked()
+{
+    this->hide();
+    account_manage_window->passWord=passWord;
+    account_manage_window->userProfile=userProfile;
+    account_manage_window->show();
+}

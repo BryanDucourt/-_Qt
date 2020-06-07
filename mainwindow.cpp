@@ -48,17 +48,11 @@ void MainWindow::on_pushButton_clicked()
             {
                 int id=identity.toInt();
                 this->hide();
-                switch (id)
-                {
-                case 0:
-                    loginwindow->id=id;
-                    loginwindow->userName=account;
-                    loginwindow->show();
-                    break;
-                case 1:
-                    break;
-                }
-
+                loginwindow->id=id;
+                loginwindow->userName=account;
+                loginwindow->passWord=passWord;
+                loginwindow->userProfile=userProfile;
+                loginwindow->show();
             }
             else
             {

@@ -16,26 +16,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    account_manage.cpp \
+    dialog_change_done.cpp \
     dialogquit.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    querywindow.cpp \
-    teacherloginwindow.cpp
+    querywindow.cpp
 
 HEADERS += \
+    account_manage.h \
+    dialog_change_done.h \
     dialogquit.h \
     loginwindow.h \
     mainwindow.h \
-    querywindow.h \
-    teacherloginwindow.h
+    querywindow.h
 
 FORMS += \
+    account_manage.ui \
+    dialog_change_done.ui \
     dialogquit.ui \
     loginwindow.ui \
     mainwindow.ui \
-    querywindow.ui \
-    teacherloginwindow.ui
+    querywindow.ui
 
 TRANSLATIONS += \
     homework_zh_CN.ts
