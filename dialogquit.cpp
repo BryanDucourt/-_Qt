@@ -6,6 +6,7 @@ DialogQuit::DialogQuit(QWidget *parent) :
     ui(new Ui::DialogQuit)
 {
     ui->setupUi(this);
+    setWindowFlag(Qt::FramelessWindowHint);
 }
 
 DialogQuit::~DialogQuit()

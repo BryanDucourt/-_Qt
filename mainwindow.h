@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <cstdlib>
+#include <ui_loginwindow.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -25,6 +26,8 @@ private slots:
     void on_radioButton_2_clicked();
 
     void on_radioButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

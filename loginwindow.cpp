@@ -1,5 +1,6 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
+#include "ui_querywindow.h"
 void LoginWindow::dealSelfSlot()
 {
     querywindow->close();
@@ -15,13 +16,16 @@ LoginWindow::LoginWindow(QWidget *parent) :
     m_areaMovable.setRect(0,0,this->width(),30);
     connect(querywindow,SIGNAL(mySignal()),this,SLOT(dealSelfSlot()));
     connect(account_manage_window,SIGNAL(mySignal()),this,SLOT(dealSelfSlot_1()));
-    if (id==0)
-        ui->pushButton_4->hide();
-
+    connect(score_manage_window,SIGNAL(mySignal()),this,SLOT(dealSelfSlot_2()));
 }
 void LoginWindow::dealSelfSlot_1()
 {
     account_manage_window->close();
+    this->show();
+}
+void LoginWindow::dealSelfSlot_2()
+{
+    score_manage_window->close();
     this->show();
 }
 void LoginWindow::mousePressEvent(QMouseEvent *e)
@@ -74,6 +78,10 @@ void LoginWindow::on_pushButton_clicked()
     this->hide();
     querywindow->id=id;
     querywindow->userName=userName;
+    if(id==0)
+        querywindow->ui->teacher_button->hide();
+    else
+        querywindow->ui->teacher_button->show();
     querywindow->show();
 
 
@@ -87,4 +95,10 @@ void LoginWindow::on_pushButton_3_clicked()
     account_manage_window->passWord=passWord;
     account_manage_window->userProfile=userProfile;
     account_manage_window->show();
+}
+
+void LoginWindow::on_pushButton_4_clicked()
+{
+    this->hide();
+    score_manage_window->show();
 }

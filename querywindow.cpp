@@ -25,8 +25,7 @@ queryWindow::queryWindow(QWidget *parent) :
         gradeRead+=temp;
     }
     fileRead.close();
-    if(id==0)
-        ui->teacher_button->hide();
+
 }
 
 queryWindow::~queryWindow()

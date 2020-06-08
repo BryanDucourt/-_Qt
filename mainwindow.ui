@@ -59,7 +59,7 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
+      <family>幼圆</family>
       <pointsize>15</pointsize>
      </font>
     </property>
@@ -78,7 +78,7 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
+      <family>幼圆</family>
       <pointsize>15</pointsize>
      </font>
     </property>
@@ -97,9 +97,12 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
+      <family>幼圆</family>
       <pointsize>15</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/background/ChooseButton.png);</string>
     </property>
     <property name="text">
      <string>登录</string>
@@ -127,6 +130,11 @@
       <height>19</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+     </font>
+    </property>
     <property name="text">
      <string>教师</string>
     </property>
@@ -139,6 +147,14 @@
       <width>115</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>学生</string>
@@ -157,7 +173,43 @@
      <string notr="true"/>
     </property>
    </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>481</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/background/mainBack.jpg);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>442</x>
+       <y>10</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/background/CloseButton.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
    <zorder>listView</zorder>
+   <zorder>frame</zorder>
    <zorder>idInput</zorder>
    <zorder>input2</zorder>
    <zorder>label</zorder>
@@ -167,7 +219,6 @@
    <zorder>radioButton</zorder>
    <zorder>radioButton_2</zorder>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

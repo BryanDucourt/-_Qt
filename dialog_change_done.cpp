@@ -6,6 +6,7 @@ dialog_change_done::dialog_change_done(QWidget *parent) :
     ui(new Ui::dialog_change_done)
 {
     ui->setupUi(this);
+    setWindowFlag(Qt::FramelessWindowHint);
 }
 
 dialog_change_done::~dialog_change_done()

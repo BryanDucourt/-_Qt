@@ -6,6 +6,8 @@ account_manage::account_manage(QWidget *parent) :
     ui(new Ui::account_manage)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
+    m_areaMovable.setRect(0,0,this->width(),30);
     ui->Wrong1->hide();
     ui->Wrong2->hide();
 }
@@ -62,4 +64,37 @@ void account_manage::on_pushButton_2_clicked()
 {
     emit mySignal();
 
+}
+void account_manage::mousePressEvent(QMouseEvent *e)
+{
+  //鼠标左键
+  if(e->button() == Qt::LeftButton)
+  {
+  m_ptPress = e->pos();
+  qDebug() << pos() << e->pos() << m_ptPress;
+  m_bPressed = m_areaMovable.contains(m_ptPress);
+  }
+}
+
+void account_manage::mouseMoveEvent(QMouseEvent *e)
+{
+  if(m_bPressed)
+  {
+  qDebug() << pos() << e->pos() << m_ptPress;
+  move(pos() + e->pos() - m_ptPress);
+  }
+}
+
+void account_manage::mouseReleaseEvent(QMouseEvent *)
+{
+  m_bPressed = false;
+}
+
+//设置鼠标按下的区域
+void account_manage::setAreaMovable(const QRect rt)
+{
+  if(m_areaMovable != rt)
+  {
+  m_areaMovable = rt;
+  }
 }

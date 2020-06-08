@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //this->setWindowFlags(Qt::FramelessWindowHint);
     ui->setupUi(this);
+    setWindowFlag(Qt::FramelessWindowHint);
     QFile fileRead("E:\\Qt workshop\\homework\\userProfile.txt");
     if (!fileRead.exists())
         ui->label_3->setText("文件不存在");
@@ -52,6 +53,8 @@ void MainWindow::on_pushButton_clicked()
                 loginwindow->userName=account;
                 loginwindow->passWord=passWord;
                 loginwindow->userProfile=userProfile;
+                if (id==0)
+                loginwindow->ui->pushButton_4->hide();
                 loginwindow->show();
             }
             else
@@ -73,4 +76,9 @@ void MainWindow::on_radioButton_2_clicked()
 void MainWindow::on_radioButton_clicked()
 {
     identity="1";
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QApplication::exit();
 }

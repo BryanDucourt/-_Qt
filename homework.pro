@@ -22,7 +22,8 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    querywindow.cpp
+    querywindow.cpp \
+    score_manage.cpp
 
 HEADERS += \
     account_manage.h \
@@ -30,7 +31,8 @@ HEADERS += \
     dialogquit.h \
     loginwindow.h \
     mainwindow.h \
-    querywindow.h
+    querywindow.h \
+    score_manage.h
 
 FORMS += \
     account_manage.ui \
@@ -38,7 +40,8 @@ FORMS += \
     dialogquit.ui \
     loginwindow.ui \
     mainwindow.ui \
-    querywindow.ui
+    querywindow.ui \
+    score_manage.ui
 
 TRANSLATIONS += \
     homework_zh_CN.ts
