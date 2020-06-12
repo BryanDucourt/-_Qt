@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     //this->setWindowFlags(Qt::FramelessWindowHint);
     ui->setupUi(this);
     setWindowFlag(Qt::FramelessWindowHint);
-    QFile fileRead("E:\\Qt workshop\\homework\\userProfile.txt");
+    QFile fileRead("userProfile.txt");
     if (!fileRead.exists())
         ui->label_3->setText("文件不存在");
     if(!fileRead.open(QIODevice::ReadOnly | QIODevice::Text))

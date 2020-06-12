@@ -19,6 +19,7 @@ public:
     void sendSignal();
     Ui::queryWindow *ui;
     QString userName;
+    QString gradeRead;
     int id;
     void setAreaMovable(const QRect rt);
 protected:
@@ -37,7 +38,7 @@ private:
     QRect m_areaMovable;//可移动窗口的区域，鼠标只有在该区域按下才能移动窗口
     bool m_bPressed;//鼠标按下标志（不分左右键）
     QPoint m_ptPress;//鼠标按下的初始位置
-    QString gradeRead;
+
 signals:
     void mySignal();
 };

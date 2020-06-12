@@ -11,20 +11,7 @@ queryWindow::queryWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
     m_areaMovable.setRect(0,0,this->width(),30);
-    QFile fileRead("E:\\Qt workshop\\homework\\grade.txt");
-    if (!fileRead.exists())
-        ui->tip->setText("未找到文件！");
-    if(!fileRead.open(QIODevice::ReadOnly | QIODevice::Text))
-    ui->tip->setText("打开文件失败");
-    QTextStream readStream(&fileRead);
-    readStream.setCodec("UTF-8");
-    while(!readStream.atEnd())
-    {
-        QString temp;
-        temp=readStream.readLine();
-        gradeRead+=temp;
-    }
-    fileRead.close();
+
 
 }
 
@@ -35,6 +22,7 @@ queryWindow::~queryWindow()
 
 void queryWindow::on_student_button_clicked()
 {
+    ui->tableWidget->QTableWidget::clearContents();
     QString search,temp,locate;
     if (id==0)
     {
@@ -45,6 +33,7 @@ void queryWindow::on_student_button_clicked()
     search=ui->search_input->text();
     if(gradeRead.indexOf(search)!=-1)
     {
+        ui->tip->clear();
         int j=0;
         int n=gradeRead.indexOf((search)),pos_beg,pos_end;
         pos_beg=gradeRead.lastIndexOf("-",n);
@@ -66,8 +55,9 @@ void queryWindow::on_student_button_clicked()
 
         }
         ui->tableWidget->setItem(0,5,new QTableWidgetItem(QString::number(j/3)));
-
     }
+    else
+        ui->tip->setText("未找到对应信息！");
 }
 
 void queryWindow::on_back_button_clicked()

@@ -1,6 +1,7 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include "ui_querywindow.h"
+#include "ui_score_manage.h"
 void LoginWindow::dealSelfSlot()
 {
     querywindow->close();
@@ -78,10 +79,25 @@ void LoginWindow::on_pushButton_clicked()
     this->hide();
     querywindow->id=id;
     querywindow->userName=userName;
+    QFile fileRead("grade.txt");
+    if (!fileRead.exists())
+        querywindow->ui->tip->setText("未找到文件！");
+    if(!fileRead.open(QIODevice::ReadOnly | QIODevice::Text))
+        querywindow->ui->tip->setText("打开文件失败");
+    QTextStream readStream(&fileRead);
+    readStream.setCodec("UTF-8");
+    while(!readStream.atEnd())
+    {
+        QString temp;
+        temp=readStream.readLine();
+        querywindow->gradeRead+=temp;
+    }
+    fileRead.close();
     if(id==0)
         querywindow->ui->teacher_button->hide();
     else
         querywindow->ui->teacher_button->show();
+    querywindow->ui->tableWidget->QTableWidget::clearContents();
     querywindow->show();
 
 
@@ -94,11 +110,27 @@ void LoginWindow::on_pushButton_3_clicked()
     this->hide();
     account_manage_window->passWord=passWord;
     account_manage_window->userProfile=userProfile;
+
     account_manage_window->show();
 }
 
 void LoginWindow::on_pushButton_4_clicked()
 {
     this->hide();
+    QFile fileRead("grade.txt");
+    if (!fileRead.exists())
+        score_manage_window->ui->tip->setText("读取成绩单失败！");
+    if(!fileRead.open(QIODevice::ReadOnly | QIODevice::Text))
+        score_manage_window->ui->tip->setText("打开成绩单失败");
+    QTextStream readStream(&fileRead);
+    readStream.setCodec("UTF-8");
+    while(!readStream.atEnd())
+    {
+        QString temp;
+        temp=readStream.readLine();
+        score_manage_window->score_change_read+=temp;
+    }
+    fileRead.close();
+    score_manage_window->ui->tableWidget->QTableWidget::clearContents();
     score_manage_window->show();
 }

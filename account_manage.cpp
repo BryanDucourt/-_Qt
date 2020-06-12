@@ -52,7 +52,7 @@ void account_manage::on_pushButton_clicked()
     QString passWord_chenged=ui->new_password_cofirm->text();
     int n=userProfile.indexOf(passWord);
     userProfile.replace(n,passWord_chenged.size(),passWord_chenged);
-    QFile change_read("E:\\Qt workshop\\homework\\userProfile.txt");
+    QFile change_read("userProfile.txt");
     change_read.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream writeStream(&change_read);
     writeStream<<userProfile;

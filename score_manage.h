@@ -19,6 +19,9 @@ public:
     ~score_manage();
     void send_signal();
     void setAreaMovable(const QRect rt);
+    QString gradeRead;
+    Ui::score_manage *ui;
+    QString score_change_read;
 private slots:
     void on_loadin_button_clicked();
 
@@ -30,13 +33,13 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *);
 private:
-    Ui::score_manage *ui;
-    QString score_change_read;
+
+
     dialog_change_done *dialog=new dialog_change_done;
     QRect m_areaMovable;//可移动窗口的区域，鼠标只有在该区域按下才能移动窗口
     bool m_bPressed;//鼠标按下标志（不分左右键）
     QPoint m_ptPress;//鼠标按下的初始位置
-    QString gradeRead;
+
 signals:
     void mySignal();
 };

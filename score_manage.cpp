@@ -9,21 +9,7 @@ score_manage::score_manage(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
     m_areaMovable.setRect(0,0,this->width(),30);
-    QFile fileRead("E:\\Qt workshop\\homework\\grade.txt");
-    if (!fileRead.exists())
-        ui->tip->setText("读取成绩单失败！");
-    if(!fileRead.open(QIODevice::ReadOnly | QIODevice::Text))
-        ui->tip->setText("打开成绩单失败");
-    QTextStream readStream(&fileRead);
-    readStream.setCodec("UTF-8");
-    while(!readStream.atEnd())
-    {
-        QString temp;
-        temp=readStream.readLine();
-        score_change_read+=temp;
     }
-    fileRead.close();
-}
 
 score_manage::~score_manage()
 {
@@ -65,7 +51,7 @@ void score_manage::on_writein_button_clicked()
     text_write+="-";
     for (int i=0;i<n;i++)
     {
-        if(ui->tableWidget->item(i,0)!=NULL)
+        if(ui->tableWidget->item(i,0)!=NULL && ui->tableWidget->item(i,0)->text()!="")
         {
             text_write+="-";
             temp=ui->tableWidget->item(i,0)->text();
@@ -88,7 +74,7 @@ void score_manage::on_writein_button_clicked()
             break;
     }
     text_write+="-";
-    QFile file_write("E:\\Qt workshop\\homework\\grade.txt");
+    QFile file_write("grade.txt");
     file_write.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream writeStream(&file_write);
     writeStream.setCodec("UTF-8");
